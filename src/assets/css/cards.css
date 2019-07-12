@@ -1,0 +1,16 @@
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card {
+	flex-grow: 1;
+	/*margin-right: 1rem;*/
+	padding: 1rem 2rem;
+	background: var(--background-first-color);
+	border-radius: 10px;
+}
+
+/* .card:not(:last-child), .card:not(:nth-child(-2)) {
+	max-width: 50%;
+} */

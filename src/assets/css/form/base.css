@@ -1,0 +1,20 @@
+
+.form-group .form-control {
+	border-radius: 10px;
+	border: none;
+	padding: 1rem 2rem;
+	font-size: 1rem;
+	box-shadow: 0 0 15px #0002;
+}
+
+.form-group {
+	display: inline-block;
+	margin: 1rem 0;
+	position: relative;
+}
+
+.form-group span {
+	display: block;
+	margin: .5rem 0;
+	font-weight: 500;
+}

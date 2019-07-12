@@ -1,0 +1,89 @@
+.beats {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -2rem;
+}
+
+.beat {
+	flex-grow: 1;
+	text-align: center;
+	margin: 0 2rem 2rem 0;
+	position: relative;
+	padding: 25px;
+}
+
+.beat__cover {
+	border-radius: 3px;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 0 5px #0006;
+	margin: 0 auto;
+}
+
+.beat__cover__img {
+	display: block;
+	width: 100%;
+}
+
+.beat__cover__button {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	/*display: none;*/
+	/*opacity: .75;*/
+	background: #111a;
+	padding: 0;
+}
+
+.beat__cover__button span {
+	color: #fff;
+	font-size: 5rem;
+	line-height: 1;
+}
+
+.beat__cover__img + .beat__cover__button {
+	display: none;
+}
+
+.beat__cover:hover .beat__cover__button {
+	display: block;
+}
+
+.beat .background {
+	position: absolute;
+	background-size: cover;
+	background-position: 50%;
+	z-index: -1;
+	filter: brightness(.5) blur(3px);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* top: -10px;
+	bottom: -10px;
+	left: -10px;
+	right: -10px; */
+}
+
+@media screen and (max-width: 1280px)
+{
+	.beat {
+		display: block;
+		text-align: center;
+	}
+
+	.beat__cover {
+		width: 100%;
+		height: unset;
+		margin-bottom: 25px;
+	}
+
+	.beat button {
+		width: 100%;
+	}
+}
