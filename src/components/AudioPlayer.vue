@@ -44,7 +44,7 @@
 
 	#svg circle {
 		/*stroke-dashoffset: 0;*/
-		stroke: #ccc;
+		stroke: #ddd;
 		transition: stroke-dashoffset 2s linear;
 		stroke-width: 6px;
 	}
@@ -56,7 +56,7 @@
 		height: 200px;
 		width: 200px;
 		margin: 0 auto 1rem auto;
-		box-shadow: 0 0 5px #0002;
+		/*box-shadow: 0 0 5px #0002;*/
 		border-radius: 100%;
 		position: relative;
 	}
@@ -66,7 +66,7 @@
 		width: 188px;
 		left: 6px;
 		top: 6px;
-		box-shadow: inset 0 0 5px #0002;
+		/*box-shadow: inset 0 0 5px #0002;*/
 		content: '';
 		border-radius: 100%;
 		z-index: 0;

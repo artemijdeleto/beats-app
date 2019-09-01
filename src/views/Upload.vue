@@ -41,7 +41,8 @@
 					id: 0,
 					title: '',
 					tempo: 100,
-					cover: {}
+					cover: {},
+					tags: ''
 				}
 			}
 		},

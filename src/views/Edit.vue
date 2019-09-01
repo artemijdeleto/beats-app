@@ -26,6 +26,9 @@
 			</label>
 			<hr class="muted">
 			<br>
+			<h2>Файлы</h2>
+			<hr class="muted">
+			<br>
 			<h2>Лицензирование</h2>
 			<div class="grid grid-3-1">
 				<div v-for="license in audio.licenses" class="license">

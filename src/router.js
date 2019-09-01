@@ -12,6 +12,7 @@ import AccountMessages from './views/account/messages.vue'
 import AccountSettings from './views/account/settings.vue'
 // import Dashboard from './views/Dashboard.vue'
 import Upload from './views/Upload.vue'
+import Preview from './views/preview.vue'
 import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
@@ -28,6 +29,11 @@ export default new Router({
 			path: '/',
 			component: Home,
 			meta: { title: 'Home' }
+		},
+		{
+			path: '/preview',
+			component: Preview,
+			meta: { title: 'Preview' }
 		},
 		{
 			path: '/account/auth',

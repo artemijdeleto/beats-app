@@ -5,27 +5,29 @@
 			<span class="material-icons">whatshot</span>
 			<span>Самые продаваемые</span>
 		</h1>
-		<div v-for="beat in beats" class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img"
-					v-if="beat.cover.medium"
-					:id="beat.id"
-					:src="beat.cover.medium"
-					alt="">
-				<button @click="player.play(beat.id)" class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
+		<div class="audio-cards">
+			<div v-for="beat in beats" class="audio">
+				<div class="audio__cover">
+					<img class="audio__cover__img"
+						v-if="beat.cover.medium"
+						:id="beat.id"
+						:src="beat.cover.medium"
+						alt="">
+					<button @click="player.play(beat.id)" class="audio__cover__controls">
+						<span class="material-icons">play_arrow</span>
+					</button>
+				</div>
+				<h3>
+					<router-link :to="'/beats/' + beat.id">
+						{{ beat.title }}
+					</router-link>
+				</h3>
+				<h6 class="muted">
+						<router-link :to="'/user/' + beat.user.id">
+						{{ beat.user.nickname }}
+					</router-link>
+				</h6>
 			</div>
-			<h3>
-				<router-link :to="'/beats/' + beat.id">
-					{{ beat.title }}
-				</router-link>
-			</h3>
-			<h6 class="muted">
-					<router-link :to="'/user/' + beat.user.id">
-					{{ beat.user.nickname }}
-				</router-link>
-			</h6>
 		</div>
 	</section>
 

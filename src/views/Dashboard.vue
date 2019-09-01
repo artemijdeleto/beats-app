@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-cloak>
 		<transition-group name="slide-fade" mode="out-in">
 			<loading key="1" v-if="(loading || initialLoading)">Waiting for beats..</loading>
 			<div v-if="(!loading && beats[0] != undefined)" key="2">

@@ -249,7 +249,7 @@ aside nav a {
 	max-height: 150px;
 	border-radius: 100%;
 	object-fit: cover;
-	box-shadow: 0 0 25px var(--shadow-color);
+	box-shadow: 0 0 5px var(--shadow-color);
 }
 
 .list-item {
@@ -368,4 +368,25 @@ aside nav a {
 		grid-template-rows: 1fr auto;
 		grid-template-columns: 1fr;
 	} 
+}
+
+
+.audio-cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 2rem;
+	justify-content: space-around;
+	/*grid-template-columns: minmax(100px, 1fr);*/
+	/*flex-wrap: wrap;*/
+}
+
+.audio-cards .audio {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	/*flex-grow: 1;*/
+}
+
+.audio__cover {
+	width: 100%;
 }
