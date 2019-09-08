@@ -51,6 +51,10 @@
 	import AudioItem from '@/components/audio'
 
 	export default {
+		components: {
+			loading,
+			AudioItem
+		},
 		data: () => {
 			return {
 				totalBeats: 0,
@@ -66,14 +70,39 @@
 				]
 			}
 		},
-		components: {
-			loading,
-			AudioItem
-		},
 		watch: {
 			'$route' (to, from) {
 				this.getBeats({ page: to.params.page });
 			}
+		},
+		created: function() {
+			fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?user_id=${this.$root.user.id}`)
+				.then((data) => {
+					return data.json();
+				})
+				.then((data) => {
+					// this.totalBeats = data.total;
+					// this.pages = data.pages; // it should be calculated on client side
+					this.beats = data;
+				});
+
+			/*fetch(`${process.env.VUE_APP_API_ROOT}/audio.info`)
+				.then((data) => {
+					return data.json();
+				})
+				.then((data) => {
+					this.totalBeats = data.total;
+					this.pages = data.pages; // it should be calculated on client side
+				});
+
+			let page = this.$route.params.page;
+			page = (page > 0) ? page : 1;
+			this.getBeats({ page });
+			this.loading = false;
+
+			setTimeout(() => {
+				if (this.beats[0] == undefined) this.loading = true;
+			}, 500);*/
 		},
 		methods: {
 			play: function(e) {
@@ -93,7 +122,7 @@
 					}
 				}
 
-				fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?id=${id}`)
+				fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?id=${id}`)
 					.then(res => res.json())
 						.then(res => {
 							player.playlist.push(res[0]);
@@ -110,7 +139,7 @@
 				{
 					if (!this.initialLoading) this.loading = true;
 					this.nomore = false;
-					let data = await fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?page=${options.page}`);
+					let data = await fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?page=${options.page}`);
 					let temp = await data.json();
 					if (temp[0] != undefined)
 					{
@@ -126,35 +155,6 @@
 				}
 				// else setTimeout(() => { this.beats = this.$root.beats; }, 1000);
 			}
-		},
-		created: function() {
-			fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?user_id=${this.$root.user.id}`)
-				.then((data) => {
-					return data.json();
-				})
-				.then((data) => {
-					// this.totalBeats = data.total;
-					// this.pages = data.pages; // it should be calculated on client side
-					this.beats = data;
-				});
-
-			/*fetch(`${process.env.VUE_APP_API_ROOT}/beats.info`)
-				.then((data) => {
-					return data.json();
-				})
-				.then((data) => {
-					this.totalBeats = data.total;
-					this.pages = data.pages; // it should be calculated on client side
-				});
-
-			let page = this.$route.params.page;
-			page = (page > 0) ? page : 1;
-			this.getBeats({ page });
-			this.loading = false;
-
-			setTimeout(() => {
-				if (this.beats[0] == undefined) this.loading = true;
-			}, 500);*/
 		}
 	}
 </script>

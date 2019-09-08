@@ -170,7 +170,7 @@
 						}
 					}
 				};
-				xhr.open('post', `${process.env.VUE_APP_API_ROOT}/beats.add?token=${this.$root.user.token}`);
+				xhr.open('post', `${process.env.VUE_APP_API_ROOT}/audio.add?token=${this.$root.user.token}`);
 				xhr.send(data);
 			}
 		}

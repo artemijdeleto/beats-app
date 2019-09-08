@@ -77,7 +77,7 @@
 				this.audio = this.$route.meta.data;
 				this.update();
 			} else {
-				fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?id=${this.$route.params.id}&fields=contributors,licenses`)
+				fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?id=${this.$route.params.id}&fields=contributors,licenses`)
 					.then(data => data.json())
 					.then(data => this.audio = data);
 			}
@@ -133,12 +133,12 @@
 						}
 					}
 				};
-				xhr.open('post', `${process.env.VUE_APP_API_ROOT}/beats.update?id=${this.audio.id}&token=${this.$root.user.token}`);
+				xhr.open('post', `${process.env.VUE_APP_API_ROOT}/audio.update?id=${this.audio.id}&token=${this.$root.user.token}`);
 				xhr.send(data);
 			},
 			remove(ev) {
 				if (confirm('Are you sure?')) {
-					fetch(`${process.env.VUE_APP_API_ROOT}/beats.delete?id=${this.audio.id}&token=${this.$root.user.token}`);
+					fetch(`${process.env.VUE_APP_API_ROOT}/audio.delete?id=${this.audio.id}&token=${this.$root.user.token}`);
 					Snackbar(`${this.audio.title} was successfully deleted`);
 					this.$router.push('/beats/my');
 				}

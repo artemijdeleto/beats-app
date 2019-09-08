@@ -5,7 +5,12 @@
 				<circle r="97" cx="100" cy="100" fill="transparent" stroke-dasharray="610" stroke-dashoffset="0"></circle>
 				<circle id="bar" r="97" cx="100" cy="100" fill="transparent" stroke-dasharray="610" stroke-dashoffset="610"></circle>
 			</svg>
-			<img v-if="playlist[currentTrack].cover.large" :src="playlist[currentTrack].cover.large" class="side-player__img" alt="">
+			<img
+				v-if="playlist[currentTrack].cover.large"
+				:src="playlist[currentTrack].cover.large"
+				class="side-player__img"
+				alt=""
+			>
 		</div>
 		<h1>
 			<router-link :to="'/beats/' + playlist[currentTrack].id">
@@ -105,7 +110,7 @@
 			}
 		},
 		created: function() {
-			fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?sort=recent`)
+			fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?sort=recent`)
 				.then(res => res.json())
 				.then(res => {
 					if (res[0]) {
@@ -174,11 +179,24 @@
 			});
 		},
 		methods: {
-			play: function(src) {
+			isPlaying(id = 0) {
+				return (id == 0)
+					? this.playing
+					: (
+						this.playing
+						&&
+						this.playlist[this.currentTrack].id == id
+					);
+			},
+			play(src) {
 				if (isNaN( Number(src) )) { // URI passed
 
 				} else { // id passed
 					let found = false;
+
+					if (this.playlist[this.currentTrack].id == src) {
+						return this.audio.play();
+					}
 
 					this.playlist.forEach((el, i) => {
 						if (this.playlist[i].id == src) {
@@ -192,7 +210,7 @@
 					});
 
 					if (!found) {
-						fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?id=${src}`)
+						fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?id=${src}`)
 							.then(res => res.json())
 							.then(res => {
 								const idx = this.playlist.push(res) - 1;

@@ -84,7 +84,7 @@
 					}
 				}
 
-				fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?id=${id}`)
+				fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?id=${id}`)
 					.then(res => res.json())
 						.then(res => {
 							player.playlist.push(res[0]);
@@ -101,7 +101,7 @@
 				{
 					if (!this.initialLoading) this.loading = true;
 					this.nomore = false;
-					let data = await fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?page=${options.page}`);
+					let data = await fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?page=${options.page}`);
 					let temp = await data.json();
 					if (temp[0] != undefined)
 					{
@@ -120,7 +120,7 @@
 		},
 		created: function()
 		{
-			fetch(`${process.env.VUE_APP_API_ROOT}/beats.info`)
+			fetch(`${process.env.VUE_APP_API_ROOT}/audio.info`)
 				.then((data) => {
 					return data.json();
 				})

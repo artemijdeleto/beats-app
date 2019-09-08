@@ -1,6 +1,5 @@
 <template>
 	<div :class="{ 'dark': this.$root.settings.darkTheme, 'menu--opened': menu }" id="app">
-
 		<header>
 			<nav>
 				<button id="menu-button" @click="menu = !menu" class="button button--large button--accent mr-1">
@@ -27,7 +26,6 @@
 		</header>
 
 		<aside class="left">
-
 			<router-link v-if="this.$root.user.logged" to="/upload" class="button button--accent button--large">
 				<span class="material-icons mr-1">library_add</span>
 				<span>Загрузить</span>
@@ -74,7 +72,6 @@
 		</main>
 
 		<aside class="right">
-
 			<div v-if="this.$root.user.logged" class="side-profile">
 				<img class="side-profile__img" :src="this.$root.user.avatar" alt="">
 				<!-- <br> -->
@@ -111,23 +108,9 @@
 							</td>
 						</tr>
 					</table>
-					<!-- <h6>
-						<span class="material-icons mr-1">monetization_on</span>
-						<span class="mr-1">Sales</span>
-						<b>10</b>
-					</h6>
-					<h6>
-						<span class="material-icons mr-1">library_music</span>
-						<span class="mr-1">Beats</span>
-						<b>26</b>
-					</h6>
-					<h6>
-						<span class="material-icons mr-1">people</span>
-						<span class="mr-1">Followers</span>
-						<b>250</b>
-					</h6> -->
 				</div>
 			</div>
+
 			<Player ref="player"></Player>
 		</aside>
 	</div>
@@ -137,13 +120,13 @@
 	import Player from '@/components/AudioPlayer.vue'
 
 	export default {
+		components: {
+			Player
+		},
 		data() {
 			return {
 				menu: false
 			}
-		},
-		components: {
-			Player
 		}
 	}
 </script>

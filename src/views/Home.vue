@@ -2,32 +2,23 @@
 	<div>
 	<section>
 		<h1>
+			<span class="material-icons">new_releases</span>
+			<span>Новые релизы</span>
+		</h1>
+		
+		<div class="audio-cards">
+			<audio-card v-for="audio in audio.new" :audio="audio" :player="player"></audio-card>
+		</div>
+	</section>
+
+	<section>
+		<h1>
 			<span class="material-icons">whatshot</span>
 			<span>Самые продаваемые</span>
 		</h1>
+		
 		<div class="audio-cards">
-			<div v-for="beat in beats" class="audio">
-				<div class="audio__cover">
-					<img class="audio__cover__img"
-						v-if="beat.cover.medium"
-						:id="beat.id"
-						:src="beat.cover.medium"
-						alt="">
-					<button @click="player.play(beat.id)" class="audio__cover__controls">
-						<span class="material-icons">play_arrow</span>
-					</button>
-				</div>
-				<h3>
-					<router-link :to="'/beats/' + beat.id">
-						{{ beat.title }}
-					</router-link>
-				</h3>
-				<h6 class="muted">
-						<router-link :to="'/user/' + beat.user.id">
-						{{ beat.user.nickname }}
-					</router-link>
-				</h6>
-			</div>
+			<audio-card v-for="audio in audio.bestselling" :audio="audio" :player="player"></audio-card>
 		</div>
 	</section>
 
@@ -36,55 +27,9 @@
 			<span class="material-icons">whatshot</span>
 			<span>Популярное</span>
 		</h1>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/1.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">Lorde — Melodrama</a></h5>
-			<h6 class="muted">Pop music</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/2.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/3.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">Lorde — Melodrama</a></h5>
-			<h6 class="muted">Pop music</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/4.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/6.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
+
+		<div class="audio-cards">
+			<audio-card v-for="audio in audio.popular" :audio="audio" :player="player"></audio-card>
 		</div>
 	</section>
 
@@ -93,55 +38,9 @@
 			<span class="material-icons">whatshot</span>
 			<span>Рекомендации</span>
 		</h1>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/1.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">Lorde — Melodrama</a></h5>
-			<h6 class="muted">Pop music</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/2.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/3.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">Lorde — Melodrama</a></h5>
-			<h6 class="muted">Pop music</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/4.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
-		</div>
-		<div class="audio">
-			<div class="audio__cover">
-				<img class="audio__cover__img" src="assets/img/6.jpg" alt="">
-				<button class="audio__cover__controls">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
+
+		<div class="audio-cards">
+			<audio-card v-for="audio in audio.recommended" :audio="audio" :player="player"></audio-card>
 		</div>
 	</section>
 
@@ -216,33 +115,41 @@
 </template>
 
 <script>
-	// import player from '@/components/AudioPlayer';
+	import AudioCard from '@/components/audio'
 
 	export default {
+		components: {
+			AudioCard
+		},
 		data() {
 			return {
-				beats: [],
+				audio: {
+					new: [],
+					bestselling: [],
+					popular: [],
+					recommended: []
+				},
 				player: {}
 			}
 		},
+		created() {
+			this.load();
+		},
 		mounted() {
+			console.log(this);
 			this.player = this.$root.$children[0].$refs.player;
 		},
-		created() {
-			// console.log(this.player.methods.play);
-			this.getBeats();
-		},
 		methods: {
-			getBeats(options = {}) {
+			load(options = {}) {
 				// if (!this.initialLoading) this.loading = true;
 				// this.nomore = false;
-				fetch(`${process.env.VUE_APP_API_ROOT}/beats.get?sort=popular`)
-					.then(res => res.json())
-					.then(res => {
-						if (res[0] != undefined) {
-							this.beats = res;
+				fetch(`${process.env.VUE_APP_API_ROOT}/audio.get?sort=popular`)
+					.then(data => data.json())
+					.then(data => {
+						if (data[0] != undefined) {
+							this.audio.popular = data;
 						} else {
-							this.beats = [];
+							// this.audio = [];
 							// this.nomore = true;
 						}
 						// this.loading = false;
