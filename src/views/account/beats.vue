@@ -48,7 +48,7 @@
 
 <script>
 	import loading from '@/components/Loading.vue'
-	import AudioItem from '@/components/audio'
+	import AudioItem from '@/components/AudioCard'
 
 	export default {
 		components: {

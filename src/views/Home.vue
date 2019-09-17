@@ -6,9 +6,15 @@
 			<span>Новые релизы</span>
 		</h1>
 		
-		<div class="audio-cards">
-			<audio-card v-for="audio in audio.new" :audio="audio" :player="player"></audio-card>
+		
+		<div v-if="audio.new[0]" class="audio-cards">
+			<audio-card
+				v-for="audio in audio.new"
+				:audio="audio"
+				:player="player"
+			></audio-card>
 		</div>
+		<loading v-else>Загрузка..</loading>
 	</section>
 
 	<section>
@@ -17,9 +23,14 @@
 			<span>Самые продаваемые</span>
 		</h1>
 		
-		<div class="audio-cards">
-			<audio-card v-for="audio in audio.bestselling" :audio="audio" :player="player"></audio-card>
+		<div v-if="audio.bestselling[0]" class="audio-cards">
+			<audio-card
+				v-for="audio in audio.bestselling"
+				:audio="audio"
+				:player="player"
+			></audio-card>
 		</div>
+		<loading v-else>Загрузка..</loading>
 	</section>
 
 	<section>
@@ -28,9 +39,14 @@
 			<span>Популярное</span>
 		</h1>
 
-		<div class="audio-cards">
-			<audio-card v-for="audio in audio.popular" :audio="audio" :player="player"></audio-card>
+		<div v-if="audio.popular[0]" class="audio-cards">
+			<audio-card
+				v-for="audio in audio.popular"
+				:audio="audio"
+				:player="player"
+			></audio-card>
 		</div>
+		<loading v-else>Загрузка..</loading>
 	</section>
 
 	<section>
@@ -39,60 +55,28 @@
 			<span>Рекомендации</span>
 		</h1>
 
-		<div class="audio-cards">
-			<audio-card v-for="audio in audio.recommended" :audio="audio" :player="player"></audio-card>
+		<div v-if="audio.recommended[0]" class="audio-cards">
+			<audio-card
+				v-for="audio in audio.recommended"
+				:audio="audio"
+				:player="player"
+			></audio-card>
 		</div>
+		<loading v-else>Загрузка..</loading>
 	</section>
 
 	<div class="grid grid-4-4">
 		<section class="list-container">
 			<h1>Атмосферные</h1>
-			<div class="list-item">
-				<img src="assets/img/1.jpg" alt="">
-				<div class="list-item__block">
-					<h3>Travis Scott type beat</h3>
-					<h6>Chris Stapleton</h6>
-				</div>
-				<button class="awesome-button">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
-			<div class="list-item">
-				<img src="assets/img/1.jpg" alt="">
-				<div class="list-item__block">
-					<h3>Travis Scott type beat</h3>
-					<h6>Chris Stapleton</h6>
-				</div>
-				<button class="awesome-button">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
+			<loading>Загрузка..</loading>
 		</section>
 		<section class="list-container">
 			<h1>Грайм</h1>
-			<div class="list-item">
-				<img src="assets/img/1.jpg" alt="">
-				<div class="list-item__block">
-					<h3>Travis Scott type beat</h3>
-					<h6>Chris Stapleton</h6>
-				</div>
-				<button class="awesome-button">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
+			<loading>Загрузка..</loading>
 		</section>
 		<section class="list-container">
 			<h1>Легкие</h1>
-			<div class="list-item">
-				<img src="assets/img/1.jpg" alt="">
-				<div class="list-item__block">
-					<h3>Travis Scott type beat</h3>
-					<h6>Chris Stapleton</h6>
-				</div>
-				<button class="awesome-button">
-					<span class="material-icons">play_arrow</span>
-				</button>
-			</div>
+			<loading>Загрузка..</loading>
 		</section>
 	</div>
 
@@ -101,28 +85,44 @@
 			<span class="material-icons">whatshot</span>
 			<span>Популярные артисты</span>
 		</h1>
-		<div class="artist">
-			<img class="artist__img" src="assets/img/1.jpg" alt="">
-			<h5><a href="/">Reavan</a></h5>
-		</div>
-		<div class="artist">
-			<img class="artist__img" src="assets/img/2.jpg" alt="">
-			<h5><a href="/">High hopes</a></h5>
-			<h6 class="muted">140 BPM</h6>
-		</div>
+		<router-link
+			v-for="artist in artists"
+			:to="`/artist/${artist.username}`"
+			tag="div"
+			class="artist"
+		>
+			<img :src="artist.picture" class="artist__img" alt="">
+			<h6>{{ artist.nickname }}</h6>
+		</router-link>
 	</section>
 </div>
 </template>
 
 <script>
-	import AudioCard from '@/components/audio'
+	import Loading from '@/components/Loading'
+	import AudioCard from '@/components/AudioCard'
 
 	export default {
 		components: {
-			AudioCard
+			AudioCard,
+			Loading
 		},
 		data() {
 			return {
+				artists: [
+					{
+						id: 1,
+						nickname: 'Reavan',
+						username: 'reavan',
+						picture: 'assets/img/1.jpg'
+					},
+					{
+						id: 2,
+						nickname: 'Digital Underdog',
+						username: 'digital_underdog',
+						picture: 'assets/img/2.jpg'
+					}
+				],
 				audio: {
 					new: [],
 					bestselling: [],
@@ -136,7 +136,6 @@
 			this.load();
 		},
 		mounted() {
-			console.log(this);
 			this.player = this.$root.$children[0].$refs.player;
 		},
 		methods: {
