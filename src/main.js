@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import style from './assets/css/style.css'
+import '@/assets/css/style.scss'
 import { getCookie } from '@/cookie.js';
 
 Vue.config.productionTip = false;

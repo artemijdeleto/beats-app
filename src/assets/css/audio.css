@@ -60,9 +60,11 @@
 	color: var(--text-color);
 }
 
-
-
-
+.audio-grid {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr 1fr;
+}
 
 .artist {
 	width: 200px;
@@ -90,4 +92,24 @@
 	max-height: 150px;
 	border-radius: 10px;
 	display: block;
+}
+
+.audio-cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 2rem;
+	justify-content: space-around;
+	/*grid-template-columns: minmax(100px, 1fr);*/
+	/*flex-wrap: wrap;*/
+}
+
+.audio-cards .audio {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	/*flex-grow: 1;*/
+}
+
+.audio__cover {
+	width: 100%;
 }
