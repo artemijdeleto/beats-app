@@ -14,7 +14,7 @@
 					<span class="material-icons">search</span>
 					<span>Поиск</span>
 				</router-link>
-				<router-link to="/explore/beats">
+				<router-link to="/explore/music">
 					<span class="material-icons">queue_music</span>
 					<span>Музыка</span>
 				</router-link>
@@ -26,11 +26,11 @@
 		</header>
 
 		<aside class="left">
-			<router-link v-if="this.$root.user.logged" to="/upload" class="button button--accent button--large">
+			<router-link v-if="this.$root.user.logged" to="/audio/add" class="button button--accent button--large">
 				<span class="material-icons mr-1">library_add</span>
 				<span>Загрузить</span>
 			</router-link>
-			<router-link v-else to="/account/auth" class="button button--accent button--large">
+			<router-link v-else to="/account/sign" class="button button--accent button--large">
 				<span class="material-icons mr-1">exit_to_app</span>	   
 				<span>Войти</span>
 			</router-link>
@@ -45,7 +45,7 @@
 					<span class="material-icons">mail_outline</span>
 					<span>Messages</span>
 				</router-link> -->
-				<router-link to="/beats/my">
+				<router-link to="/account/dashboard">
 					<span class="material-icons">queue_music</span>
 					<span>Панель управления</span>
 				</router-link>

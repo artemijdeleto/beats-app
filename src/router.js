@@ -1,23 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Auth from '@/views/Auth.vue'
-import Home from './views/Home.vue'
-import Beats from './views/Beats.vue'
-import Beat from './views/Beat'
-import Edit from './views/Edit.vue'
-import AccountBeats from '@/views/account/beats'
-import AccountOrders from '@/views/account/orders'
-import AccountMessages from './views/account/messages.vue'
-import AccountSettings from './views/account/settings.vue'
-// import Dashboard from './views/Dashboard.vue'
-import Upload from './views/Upload.vue'
-import Preview from './views/preview.vue'
-import NotFound from './views/NotFound.vue'
+import Home from '@/views/Home'
+import Preview from '@/views/preview'
+import NotFound from '@/views/NotFound'
 
-Vue.use(Router)
+import Audio from '@/views/Audio'
+import AudioAdd from '@/views/AudioAdd'
+import AudioEdit from '@/views/AudioEdit'
+
+import AccountSign from '@/views/AccountSign'
+import AccountDashboard from '@/views/AccountDashboard'
+import AccountOrders from '@/views/AccountOrders'
+import AccountMessages from '@/views/AccountMessages'
+import AccountSettings from '@/views/AccountSettings'
+
+// import Explore from '@/views/Explore'
+import ExploreMusic from '@/views/ExploreMusic'
+// import ExploreArtists from '@/views/ExploreArtists'
 
 import { setCookie } from '@/cookie.js';
+
+Vue.use(Router)
 
 export default new Router({
 	// mode: '',
@@ -28,17 +32,23 @@ export default new Router({
 		{
 			path: '/',
 			component: Home,
-			meta: { title: 'Home' }
+			meta: { title: 'Главная' }
 		},
 		{
 			path: '/preview',
 			component: Preview,
 			meta: { title: 'Preview' }
 		},
+
 		{
-			path: '/account/auth',
-			component: Auth,
-			meta: { title: 'Authorization' }
+			path: '/account/sign',
+			component: AccountSign,
+			meta: { title: 'Авторизация' }
+		},
+		{
+			path: '/account/dashboard',
+			component: AccountDashboard,
+			meta: { title: 'Панель управления' }
 		},
 		{
 			path: '/account/messages',
@@ -51,14 +61,9 @@ export default new Router({
 			meta: { title: 'Мои покупки' }
 		},
 		{
-			path: '/beats/my',
-			component: AccountBeats,
-			meta: { title: 'My beats' }
-		},
-		{
 			path: '/account/settings',
 			component: AccountSettings,
-			meta: { title: 'Settings' }
+			meta: { title: 'Настройки' }
 		},
 		{
 			path: '/account/logout',
@@ -67,35 +72,33 @@ export default new Router({
 				location.href = '/';
 			}
 		},
-		/*{
-			path: '/beats/:page(\\d+)?',
-			component: Beats,
-			meta: { title: 'beats' }
-		},*/
+
 		{
-			path: '/explore/beats',
-			component: Beats,
-			meta: { title: 'Explore beats' }
+			path: '/explore/music',
+			component: ExploreMusic,
+			meta: { title: 'Поиск музыки' }
+		},
+
+		{
+			path: '/audio/:id(\\d+)?',
+			component: Audio,
+			meta: { title: 'Просмотр композиции' }
 		},
 		{
-			path: '/beats/:id(\\d+)?',
-			component: Beat,
-			meta: { title: 'Beat' }
+			path: '/audio/add',
+			component: AudioAdd,
+			meta: { title: 'Uploading' }
 		},
 		{
-			path: '/beats/:id(\\d+)?/edit',
-			component: Edit,
-			meta: { title: 'Edit' },
+			path: '/audio/:id(\\d+)?/edit',
+			component: AudioEdit,
+			meta: { title: 'Редактирование' },
 			beforeEnter(to, from, next) {
 				to.meta.data = from.meta.data;
 				next();
 			}
 		},
-		{
-			path: '/upload',
-			component: Upload,
-			meta: { title: 'Uploading' }
-		},
+
 		{
 			path: '*',
 			component: NotFound,
@@ -103,12 +106,7 @@ export default new Router({
 				next();
 				to.meta.from = from.path;
 			},
-			meta: { from: undefined, title: 'Whoops..' }
-		}/*,
-		{
-			path: '/about',
-			name: 'about',
-			component: () => import(/* webpackChunkName: "about" */ /*'./views/About.vue')
-		}*/
+			meta: { from: undefined, title: 'Упс..' }
+		}
 	]
 })

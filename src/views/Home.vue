@@ -1,5 +1,5 @@
 <template>
-	<div>
+<div>
 	<section>
 		<h1>
 			<span class="material-icons">new_releases</span>
@@ -7,9 +7,10 @@
 		</h1>
 		
 		
-		<div v-if="audio.new[0]" class="audio-cards">
+		<div v-if="audio.recent[0]" class="audio-cards">
 			<audio-card
-				v-for="audio in audio.new"
+
+				v-for="audio in audio.recent"
 				:audio="audio"
 				:player="player"
 			></audio-card>
@@ -65,20 +66,20 @@
 		<loading v-else>Загрузка..</loading>
 	</section>
 
-	<div class="grid grid-4-4">
-		<section class="list-container">
-			<h1>Атмосферные</h1>
-			<loading>Загрузка..</loading>
-		</section>
-		<section class="list-container">
-			<h1>Грайм</h1>
-			<loading>Загрузка..</loading>
-		</section>
-		<section class="list-container">
-			<h1>Легкие</h1>
-			<loading>Загрузка..</loading>
-		</section>
-	</div>
+	<section>
+		<h1>Категории</h1>
+		<div v-if="audio.categories[0]" class="audio-grid">
+			<section v-for="category in audio.categories" class="list-container">
+				<h2>{{ category.name }}</h2>
+				<audio-row
+					v-for="audio in category.audio"
+					:audio="audio"
+					:player="player"
+				></audio-row>
+			</section>
+		</div>
+		<loading v-else>Загрузка..</loading>
+	</section>
 
 	<section>
 		<h1>
@@ -99,12 +100,14 @@
 </template>
 
 <script>
-	import Loading from '@/components/Loading'
 	import AudioCard from '@/components/AudioCard'
+	import AudioRow from '@/components/AudioRow'
+	import Loading from '@/components/Loading'
 
 	export default {
 		components: {
 			AudioCard,
+			AudioRow,
 			Loading
 		},
 		data() {
@@ -124,10 +127,11 @@
 					}
 				],
 				audio: {
-					new: [],
+					recent: [],
 					bestselling: [],
 					popular: [],
-					recommended: []
+					recommended: [],
+					categories: []
 				},
 				player: {}
 			}

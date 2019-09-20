@@ -19,11 +19,18 @@
 		</div>
 		<!-- <h5></h5> -->
 		<h3>
-			<router-link :to="'/audios/' + audio.id">
+			<router-link :to="'/audio/' + audio.id" class="mr-1">
 				{{ audio.title }}
 			</router-link>
+			<router-link
+				v-if="$options.propsData.edit"
+				:to="'/audio/' + audio.id + '/edit'"
+				class="button button--small button--accent"
+			>
+				<span class="material-icons">edit</span>
+			</router-link>
 		</h3>
-		<h6 class="muted">
+		<h6 v-if="!$options.propsData.edit" class="muted">
 			<router-link :to="'/user/' + audio.user.id">
 				{{ audio.user.nickname }}
 			</router-link>
@@ -35,6 +42,7 @@
 	export default {
 		props: {
 			audio: Object,
+			edit: Boolean,
 			player: Object
 		},
 		methods: {

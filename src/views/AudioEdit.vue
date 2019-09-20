@@ -1,5 +1,10 @@
 <template>
 	<div>
+		<!-- 
+			title, description
+			files (cover, preview, stems)
+			category, mood, tags, tempo, price
+		 -->
 		<form>
 			<h1>Основное</h1>
 			<label class="beat__cover upload-image">

@@ -1,8 +1,8 @@
 <template>
-	<div v-cloak>
+	<div>
 		<transition-group name="slide-fade" mode="out-in">
 			<loading key="1" v-if="(loading || initialLoading)">Waiting for beats..</loading>
-			<div v-if="(!loading && beats[0] != undefined)" key="2">
+			<div key="2" v-if="(!loading && audio[0] !== undefined)">
 				<!-- <form>
 					<h2>search for beats</h2>
 					<button class="button secondary">open filters</button>
@@ -10,18 +10,9 @@
 					<button class="button primary">search</button>
 				</form> -->
 				
-				<div class="dashboard">
-					<router-link :to="'/beats/' + beat.id + '/edit'" class="beat" v-for="(beat, index) in beats" :key="index">
-						<img class="cover"
-							v-if="beat.cover.medium"
-							:id="beat.id"
-							:src="beat.cover.medium"
-							@click.prevent="play">
-
-						<h1>{{ beat.title }}</h1>
-
-						<div class="background" :style="{ backgroundImage: ( beat.cover.medium ? 'url(' + beat.cover.medium + ')' : 'linear-gradient(to left, #302b63, #654ea3)' ) }"></div>
-					</router-link>
+				<div>
+					<h2>My beats</h2>
+					<audio-card v-for="audio in audio" :player="player" :audio="audio" :edit="true"></audio-card>
 				</div>
 			</div>
 			<div key="3" v-if="nomore">
@@ -31,16 +22,21 @@
 				<router-link to="/beats">1</router-link>
 				<router-link v-for="page in (pages - 1)" :to="'/beats/' + (page + 1)">{{ (page + 1) }}</router-link>
 			</div>
+			
 		</transition-group>
 	</div>
 </template>
 
 <script>
 	import loading from '@/components/Loading.vue'
+	import AudioCard from '@/components/AudioCard'
 
 	export default {
-		data: () =>
-		{
+		components: {
+			loading,
+			AudioCard
+		},
+		data: () => {
 			return {
 				totalBeats: 0,
 				initialLoading: false,
@@ -49,25 +45,55 @@
 				loading: false,
 				pages: 1,
 				beats: [
-					{
-						cover: {}
-					}
-				]
+					// {
+						// cover: {}
+					// }
+				],
+				player: {},
+				audio: []
 			}
 		},
-		components: {
-			loading
-		},
-		watch:
-		{
+		watch: {
 			'$route' (to, from) {
 				this.getBeats({ page: to.params.page });
 			}
 		},
-		methods:
-		{
-			play: function(e)
-			{
+		mounted() {
+			this.player = this.$root.$children[0].$refs.player;
+			// console.log(this.player);
+		},
+		created() {
+			// this.player = this.$root.$children[0].$refs.player;
+			fetch(`${process.env.VUE_APP_API_ROOT}/audio.get`)//?user_id=${this.$root.user.id}
+				.then((data) => {
+					return data.json();
+				})
+				.then((data) => {
+					// this.totalBeats = data.total;
+					// this.pages = data.pages; // it should be calculated on client side
+					this.audio = data;
+				});
+
+			/*fetch(`${process.env.VUE_APP_API_ROOT}/audio.info`)
+				.then((data) => {
+					return data.json();
+				})
+				.then((data) => {
+					this.totalBeats = data.total;
+					this.pages = data.pages; // it should be calculated on client side
+				});
+
+			let page = this.$route.params.page;
+			page = (page > 0) ? page : 1;
+			this.getBeats({ page });
+			this.loading = false;
+
+			setTimeout(() => {
+				if (this.beats[0] == undefined) this.loading = true;
+			}, 500);*/
+		},
+		methods: {
+			play: function(e) {
 				const id = e.target.id;
 				let player = this.$parent.$children[0];
 
@@ -117,26 +143,6 @@
 				}
 				// else setTimeout(() => { this.beats = this.$root.beats; }, 1000);
 			}
-		},
-		created: function()
-		{
-			fetch(`${process.env.VUE_APP_API_ROOT}/audio.info`)
-				.then((data) => {
-					return data.json();
-				})
-				.then((data) => {
-					this.totalBeats = data.total;
-					this.pages = data.pages; // it should be calculated on client side
-				});
-
-			let page = this.$route.params.page;
-			page = (page > 0) ? page : 1;
-			this.getBeats({ page });
-			this.loading = false;
-
-			setTimeout(() => {
-				if (this.beats[0] == undefined) this.loading = true;
-			}, 500);
 		}
 	}
 </script>
