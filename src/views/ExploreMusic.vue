@@ -4,7 +4,7 @@
 			<!-- <loading v-if="beats[0] == undefined">Waiting for beats..</loading> -->
 			<loading key="1" v-if="(loading || initialLoading)">Waiting for beats..</loading>
 			<!-- <div v-else> -->
-			<div v-if="(!loading && beats[0] != undefined)" key="2">
+			<div v-if="(!loading && audio[0] != undefined)" key="2">
 				<form>
 					<button class="button mr-1">
 						<span class="material-icons mr-1">sort</span>
@@ -19,7 +19,11 @@
 				<br>
 				<h1>Search results</h1>
 				<div class="beats">
-					<Beat v-for="(beat, index) in beats" :key="index" :beat="beat"></Beat>
+					<audio-card
+						v-for="audio in audio"
+						:audio="audio"
+						:player="player"
+					></audio-card>
 				</div>
 			</div>
 			<div key="3" v-if="nomore">
@@ -36,6 +40,7 @@
 <script>
 	import loading from '@/components/Loading.vue'
 	import Beat from '@/components/Beat.vue'
+	import AudioCard from '@/components/AudioCard.vue'
 
 	export default {
 		data: () =>
@@ -47,10 +52,12 @@
 				// currentPage: 1,
 				loading: false,
 				pages: 1,
-				beats: []
+				audio: [],
+				player: {}
 			}
 		},
 		components: {
+			AudioCard,
 			loading,
 			Beat
 		},
@@ -59,6 +66,9 @@
 			'$route' (to, from) {
 				this.getBeats({ page: to.params.page });
 			}
+		},
+		mounted() {
+			this.player = this.$root.$children[0].$refs.player;
 		},
 		methods:
 		{
@@ -110,11 +120,11 @@
 					let temp = await data.json();
 					if (temp[0] != undefined)
 					{
-						this.beats = temp;
+						this.audio = temp;
 					}
 					else
 					{
-						this.beats = [];
+						this.audio = [];
 						this.nomore = true;
 					}
 					this.loading = false;
@@ -142,7 +152,7 @@
 			this.loading = false;
 
 			setTimeout(() => {
-				if (this.beats[0] == undefined) this.loading = true;
+				if (this.audio[0] == undefined) this.loading = true;
 			}, 500);
 		}
 	}
