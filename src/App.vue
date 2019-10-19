@@ -72,45 +72,6 @@
 		</main>
 
 		<aside class="right">
-			<div v-if="this.$root.user.logged" class="side-profile">
-				<img class="side-profile__img" :src="this.$root.user.avatar" alt="">
-				<!-- <br> -->
-				<h2>
-					<router-link :to="'/user/' + this.$root.user.id">{{ this.$root.user.nickname }}</router-link>
-				</h2>
-				<div class="side-profile__stats">
-					<table>
-						<tr>
-							<td>
-								<span class="material-icons mr-1">monetization_on</span>
-								<span class="mr-1">Sales</span>
-							</td>
-							<td>
-								<b>10</b>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="material-icons mr-1">library_music</span>
-								<span class="mr-1">Beats</span>
-							</td>
-							<td>
-								<b>26</b>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="material-icons mr-1">people</span>
-								<span class="mr-1">Followers</span>
-							</td>
-							<td>
-								<b>105</b>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-
 			<Player ref="player"></Player>
 		</aside>
 	</div>
