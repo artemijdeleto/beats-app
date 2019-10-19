@@ -13,7 +13,7 @@
 			>
 		</div>
 		<h1>
-			<router-link :to="'/beats/' + playlist[currentTrack].id">
+			<router-link :to="'/audio/' + playlist[currentTrack].id">
 				{{ playlist[currentTrack].title }}
 			</router-link>
 		</h1>
