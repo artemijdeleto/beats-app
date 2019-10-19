@@ -8,19 +8,19 @@
 				</button>
 				<router-link to="/" exact>
 					<span class="material-icons">home</span>
-					<span>Главная</span>
+					<span>{{ $t('menu.home') }}</span>
 				</router-link>
 				<router-link to="/explore">
 					<span class="material-icons">search</span>
-					<span>Поиск</span>
+					<span>{{ $t('menu.search') }}</span>
 				</router-link>
 				<router-link to="/explore/music">
 					<span class="material-icons">queue_music</span>
-					<span>Музыка</span>
+					<span>{{ $t('menu.music') }}</span>
 				</router-link>
 				<router-link to="/explore/artists">
 					<span class="material-icons">people</span>
-					<span>Артисты</span>
+					<span>{{ $t('menu.artists') }}</span>
 				</router-link>
 			</nav>
 		</header>
@@ -28,11 +28,11 @@
 		<aside class="left">
 			<router-link v-if="this.$root.user.logged" to="/audio/add" class="button button--accent button--large">
 				<span class="material-icons mr-1">library_add</span>
-				<span>Загрузить</span>
+				<span>{{ $t('menu.upload') }}</span>
 			</router-link>
 			<router-link v-else to="/account/sign" class="button button--accent button--large">
 				<span class="material-icons mr-1">exit_to_app</span>	   
-				<span>Войти</span>
+				<span>{{ $t('menu.login') }}</span>
 			</router-link>
 
 			<nav v-if="this.$root.user.logged">
@@ -47,19 +47,19 @@
 				</router-link> -->
 				<router-link to="/account/dashboard">
 					<span class="material-icons">queue_music</span>
-					<span>Панель управления</span>
+					<span>{{ $t('menu.dashboard') }}</span>
 				</router-link>
 				<router-link to="/account/orders">
 					<span class="material-icons">shopping_cart</span>
-					<span>Покупки</span>
+					<span>{{ $t('menu.orders') }}</span>
 				</router-link>
 				<router-link to="/account/stats">
 					<span class="material-icons">trending_up</span>
-					<span>Статистика</span>
+					<span>{{ $t('menu.stats') }}</span>
 				</router-link>
 				<router-link to="/account/settings">
 					<span class="material-icons">settings</span>
-					<span>Настройки</span>
+					<span>{{ $t('menu.settings') }}</span>
 				</router-link>
 			</nav>
 
