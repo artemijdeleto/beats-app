@@ -13,6 +13,14 @@ export default {
 		music: 'Music',
 		artists: 'Artists'
 	},
+	home: {
+		recent: 'Recent releases',
+		bestselling: 'Bestselling',
+		popular: 'Popular',
+		popularArtists: 'Popular artists',
+		recommendations: 'Picked for you',
+		categories: 'Categories'
+	},
 	sign: {
 		title: 'Authorization',
 		username: 'Username',
@@ -22,5 +30,8 @@ export default {
 		register: 'Register',
 		create: 'Create account',
 		registered: 'I\'ve already registered'
+	},
+	common: {
+		loading: 'Loading..'
 	}
 }

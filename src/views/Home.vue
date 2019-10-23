@@ -3,9 +3,8 @@
 	<section>
 		<h1>
 			<span class="material-icons">new_releases</span>
-			<span>Новые релизы</span>
+			<span>{{ $t('home.recent') }}</span>
 		</h1>
-		
 		
 		<div v-if="audio.recent[0]" class="audio-cards">
 			<audio-card
@@ -15,13 +14,13 @@
 				:player="player"
 			></audio-card>
 		</div>
-		<loading v-else>Загрузка..</loading>
+		<loading v-else>{{ $t('common.loading') }}</loading>
 	</section>
 
 	<section>
 		<h1>
 			<span class="material-icons">whatshot</span>
-			<span>Самые продаваемые</span>
+			<span>{{ $t('home.bestselling') }}</span>
 		</h1>
 		
 		<div v-if="audio.bestselling[0]" class="audio-cards">
@@ -31,13 +30,13 @@
 				:player="player"
 			></audio-card>
 		</div>
-		<loading v-else>Загрузка..</loading>
+		<loading v-else>{{ $t('common.loading') }}</loading>
 	</section>
 
 	<section>
 		<h1>
 			<span class="material-icons">whatshot</span>
-			<span>Популярное</span>
+			<span>{{ $('home.popular') }}</span>
 		</h1>
 
 		<div v-if="audio.popular[0]" class="audio-cards">
@@ -47,13 +46,13 @@
 				:player="player"
 			></audio-card>
 		</div>
-		<loading v-else>Загрузка..</loading>
+		<loading v-else>{{ $t('common.loading') }}</loading>
 	</section>
 
 	<section>
 		<h1>
 			<span class="material-icons">whatshot</span>
-			<span>Рекомендации</span>
+			<span>{{ $t('home.recommendations') }}</span>
 		</h1>
 
 		<div v-if="audio.recommended[0]" class="audio-cards">
@@ -63,11 +62,11 @@
 				:player="player"
 			></audio-card>
 		</div>
-		<loading v-else>Загрузка..</loading>
+		<loading v-else>{{ $t('common.loading') }}</loading>
 	</section>
 
 	<section>
-		<h1>Категории</h1>
+		<h1>{{ $t('home.categories') }}</h1>
 		<div v-if="audio.categories[0]" class="audio-grid">
 			<section v-for="category in audio.categories" class="list-container">
 				<h2>{{ category.name }}</h2>
@@ -78,13 +77,13 @@
 				></audio-row>
 			</section>
 		</div>
-		<loading v-else>Загрузка..</loading>
+		<loading v-else>{{ $t('common.loading') }}</loading>
 	</section>
 
 	<section>
 		<h1>
 			<span class="material-icons">whatshot</span>
-			<span>Популярные артисты</span>
+			<span>{{ $t('home.popularArtists') }}</span>
 		</h1>
 		<router-link
 			v-for="artist in artists"
