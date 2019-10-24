@@ -32,6 +32,9 @@ export default {
 		registered: 'I\'ve already registered'
 	},
 	common: {
-		loading: 'Loading..'
+		loading: 'Loading..',
+		oops: 'Whoops..',
+		notFound: 'Seems like this page does\'t exist..',
+		goBack: 'Go back'
 	}
 }
