@@ -34,7 +34,7 @@ export default {
 	common: {
 		loading: 'Loading..',
 		oops: 'Whoops..',
-		notFound: 'Seems like this page does\'t exist..',
+		notFound: 'Seems like this page doesn\'t exist..',
 		goBack: 'Go back'
 	}
 }
