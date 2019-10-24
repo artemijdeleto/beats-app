@@ -36,7 +36,7 @@
 	<section>
 		<h1>
 			<span class="material-icons">whatshot</span>
-			<span>{{ $('home.popular') }}</span>
+			<span>{{ $t('home.popular') }}</span>
 		</h1>
 
 		<div v-if="audio.popular[0]" class="audio-cards">
