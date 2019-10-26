@@ -6,9 +6,9 @@
 		<!-- <h1>Основное</h1> -->
 		<h1>{{ audio.title }}</h1>
 		<h4 class="muted">{{ audio.user.nickname }}</h4>
-		<p>Tempo: {{ audio.tempo }} BPM</p>
+		<p>{{ $t('audio.tempo') }}: {{ audio.tempo }} BPM</p>
 		<p>
-			Tags:
+			{{ $t('audio.tags') }}:
 			<template v-for="(tag, index) in audio.tags">
 				<router-link :to="'/explore/beats?tags=' + tag">
 					<b>{{ tag }}</b>
@@ -18,18 +18,23 @@
 		</p>
 		<hr class="muted">
 		<button class="button button--red">
-			<span class="material-icons mr-1">{{ audio.likes.user_liked ? 'favorite_outline' : 'favorite' }}</span>
+			<span class="material-icons mr-1">
+				{{ audio.likes.user_liked ? 'favorite_outline' : 'favorite' }}
+			</span>
 			<!-- <span class="material-icons mr-1">favorite_outline</span> -->
 			<span>{{ audio.likes.count }}</span>
 		</button>
 		<hr class="muted">
 		<br><br>
-		<h2>Лицензирование</h2>
+		<h2>{{ $t('audio.licensing') }}</h2>
 		<div class="grid grid-3-1">
 			<div v-for="license in audio.licenses" class="license">
 				<h3>{{ license.name }}</h3>
 				<p class="license__description">{{ license.description }}</p>
-				<button class="button button--accent"><span class="material-icons mr-1">shopping_cart</span><span>Купить ({{ license.price }} руб.)</span></button>
+				<button class="button button--accent">
+					<span class="material-icons mr-1">shopping_cart</span>
+					<span>{{ $t('buy', { price: license.price }) }}</span>
+				</button>
 			</div>
 		</div>
 	</div>

@@ -31,6 +31,12 @@ export default {
 		create: 'Create account',
 		registered: 'I\'ve already registered'
 	},
+	audio: {
+		tempo: 'Tempo',
+		tags: 'Tags',
+		licensing: 'Licensing',
+		buy: 'Buy ({price} rub.)'
+	},
 	common: {
 		loading: 'Loading..',
 		oops: 'Whoops..',
