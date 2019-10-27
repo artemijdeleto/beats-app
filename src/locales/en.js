@@ -32,15 +32,22 @@ export default {
 		registered: 'I\'ve already registered'
 	},
 	audio: {
+		general: 'General',
+		title: 'Title',
 		tempo: 'Tempo',
 		tags: 'Tags',
 		licensing: 'Licensing',
-		buy: 'Buy ({price} rub.)'
+		buy: 'Buy ({price} rub.)',
+		files: 'Files',
+		advanced: 'Advanced',
+		access: 'Access parameters',
+		delete: 'Delete'
 	},
 	common: {
 		loading: 'Loading..',
 		oops: 'Whoops..',
 		notFound: 'Seems like this page doesn\'t exist..',
-		goBack: 'Go back'
+		goBack: 'Go back',
+		save: 'Save'
 	}
 }

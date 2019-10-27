@@ -6,7 +6,7 @@
 			category, mood, tags, tempo, price
 		 -->
 		<form>
-			<h1>Основное</h1>
+			<h1>{{ $t('audio.general') }}</h1>
 			<label class="beat__cover upload-image">
 				<!-- <label class="beat__cover__controls">
 					<input @change="image" type="file">
@@ -16,25 +16,25 @@
 				<img class="beat__cover__img" :src="audio.cover.medium" alt="">
 			</label>
 			<label class="form-group">
-				<span>Название</span>
+				<span>{{ $t('audio.title') }}</span>
 				<input v-model="audio.title" placeholder="Near the Ocean, Fly Me to the Moon" class="form-control">
 			</label>
 			<br>
 			<label class="form-group">
-				<span>Темп</span>
+				<span>{{ $t('audio.tempo') }}</span>
 				<input v-model="audio.tempo" placeholder="50 – 500" class="form-control">   BPM
 			</label>
 			<br>
 			<label class="form-group">
-				<span>Теги</span>
+				<span>{{ $t('audio.tags') }}</span>
 				<input v-model="audio.tags" placeholder="fast flow, atmosphere, aggressive" class="form-control">
 			</label>
 			<hr class="muted">
 			<br>
-			<h2>Файлы</h2>
+			<h2>{{ $t('audio.files') }}</h2>
 			<hr class="muted">
 			<br>
-			<h2>Лицензирование</h2>
+			<h2>{{ $t('audio.licensing') }}</h2>
 			<div class="grid grid-3-1">
 				<div v-for="license in audio.licenses" class="license">
 					<input class="button button--accent" v-model="license.name">
@@ -45,14 +45,14 @@
 
 			<hr class="muted">
 			<br>
-			<h3>Дополнительно</h3>
-			<p>Параметры доступа</p>
+			<h3>{{ $t('audio.advanced') }}</h3>
+			<p>{{ $t('audio.access') }}</p>
 			<button @click="remove" class="button button--red">
 				<span class="material-icons mr-1">delete</span>
-				<span>Удалить бит</span>
+				<span>{{ $t('audio.delete') }}</span>
 			</button>
 			<hr class="muted">
-			<button @click="update" class="button button--large button--accent">Сохранить</button>
+			<button @click="update" class="button button--large button--accent">{{ $t('common.save') }}</button>
 		</form>
 	</div>
 </template>
