@@ -33,7 +33,7 @@
 				<p class="license__description">{{ license.description }}</p>
 				<button class="button button--accent">
 					<span class="material-icons mr-1">shopping_cart</span>
-					<span>{{ $t('buy', { price: license.price }) }}</span>
+					<span>{{ $t('audio.buy', { price: license.price }) }}</span>
 				</button>
 			</div>
 		</div>
