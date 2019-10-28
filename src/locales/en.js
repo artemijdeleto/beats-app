@@ -31,6 +31,11 @@ export default {
 		create: 'Create account',
 		registered: 'I\'ve already registered'
 	},
+	settings: {
+		autoplay: 'Allow autoplay',
+		darkTheme: 'Dark theme',
+		logout: 'Log out'
+	},
 	audio: {
 		general: 'General',
 		title: 'Title',

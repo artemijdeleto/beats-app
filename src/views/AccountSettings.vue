@@ -1,21 +1,21 @@
 <template>
 	<form>
-		<h1>Настройки</h1>
+		<h1>{{ $t('menu.settings') }}</h1>
 		<br>
 		<label class="checkbox">
 			<input type="checkbox" v-model="settings.autoplay">
-			<span>Автовоспроизведение</span>
+			<span>{{ $t('settings.autoplay') }}</span>
 		</label>
 
 		<label class="checkbox">
 			<input type="checkbox" v-model="settings.darkTheme">
-			<span>Тёмная тема</span>
+			<span>{{ $t('settings.darkTheme') }}</span>
 		</label>
 
 		<!-- <hr class="muted"> -->
-		<button @click="save" class="button button--accent button--large mr-1">Сохранить</button>
+		<button @click="save" class="button button--accent button--large mr-1">{{ $t('common.save') }}</button>
 		<br><br>
-		<router-link to="/account/logout" class="button">Выйти из аккаунта</router-link>
+		<router-link to="/account/logout" class="button">{{ $t('settings.logout') }}</router-link>
 	</form>
 </template>
 
