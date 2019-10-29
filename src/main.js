@@ -9,6 +9,11 @@ import { getCookie } from '@/cookie.js';
 
 Vue.config.productionTip = false;
 
+router.beforeEach((to, from, next) => {
+	document.title = i18n.t(to.meta.title);
+	next();
+});
+
 new Vue({
 	router,
 	store,
@@ -48,13 +53,7 @@ new Vue({
 		this.settings.autoplay = localStorage.getItem('autoplay');
 		this.settings.darkTheme = localStorage.getItem('darkTheme') == 'true' ? true : false;
 
-		document.title = router.currentRoute.meta.title || 'Whoops..';
 		document.body.style.opacity = 1;
 	},
 	render: h => h(App)
 }).$mount('#app');
-
-router.beforeEach((to, from, next) => {
-	document.title = to.meta.title;
-	next();
-});

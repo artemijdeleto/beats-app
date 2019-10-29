@@ -32,7 +32,7 @@ export default new Router({
 		{
 			path: '/',
 			component: Home,
-			meta: { title: 'Главная' }
+			meta: { title: 'menu.home' }
 		},
 		{
 			path: '/preview',
@@ -48,7 +48,7 @@ export default new Router({
 		{
 			path: '/account/dashboard',
 			component: AccountDashboard,
-			meta: { title: 'Панель управления' }
+			meta: { title: 'menu.dashboard' }
 		},
 		{
 			path: '/account/messages',
@@ -58,12 +58,12 @@ export default new Router({
 		{
 			path: '/account/orders',
 			component: AccountOrders,
-			meta: { title: 'Мои покупки' }
+			meta: { title: 'menu.orders' }
 		},
 		{
 			path: '/account/settings',
 			component: AccountSettings,
-			meta: { title: 'Настройки' }
+			meta: { title: 'menu.settings' }
 		},
 		{
 			path: '/account/logout',
@@ -102,11 +102,11 @@ export default new Router({
 		{
 			path: '*',
 			component: NotFound,
+			meta: { from: undefined, title: 'common.oops' },
 			beforeEnter: (to, from, next) => {
 				next();
 				to.meta.from = from.path;
-			},
-			meta: { from: undefined, title: 'Упс..' }
+			}
 		}
 	]
 })
