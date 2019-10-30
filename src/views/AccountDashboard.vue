@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<transition-group name="slide-fade" mode="out-in">
-			<loading key="1" v-if="(loading || initialLoading)">Waiting for beats..</loading>
+			<loading key="1" v-if="(loading || initialLoading)">{{ $t('common.loading') }}</loading>
 			<div key="2" v-if="(!loading && audio[0] !== undefined)">
 				<!-- <form>
 					<h2>search for beats</h2>
@@ -11,12 +11,12 @@
 				</form> -->
 				
 				<div>
-					<h2>My beats</h2>
+					<h2>{{ $t('dashboard.audios') }}</h2>
 					<audio-card v-for="audio in audio" :player="player" :audio="audio" :edit="true"></audio-card>
 				</div>
 			</div>
 			<div key="3" v-if="nomore">
-				<p>Sorry, there's no more beats..</p>
+				<p>{{ $t('dashboard.noMore') }}</p>
 			</div>
 			<div key="4" v-if="!initialLoading && pages > 1" class="pagination">
 				<router-link to="/beats">1</router-link>

@@ -36,6 +36,10 @@ export default {
 		darkTheme: 'Dark theme',
 		logout: 'Log out'
 	},
+	dashboard: {
+		audios: 'My compositions',
+		noMore: 'No more compositions..'
+	},
 	audio: {
 		general: 'General',
 		title: 'Title',
