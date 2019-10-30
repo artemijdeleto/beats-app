@@ -40,6 +40,10 @@ export default {
 		audios: 'My compositions',
 		noMore: 'No more compositions..'
 	},
+	explore: {
+		results: 'Search results',
+		noMore: 'No more compositions. Try to apply another filters'
+	},
 	audio: {
 		general: 'General',
 		title: 'Title',

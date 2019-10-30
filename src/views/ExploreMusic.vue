@@ -2,10 +2,10 @@
 	<div>
 		<transition-group name="slide-fade" mode="out-in">
 			<!-- <loading v-if="beats[0] == undefined">Waiting for beats..</loading> -->
-			<loading key="1" v-if="(loading || initialLoading)">Waiting for beats..</loading>
+			<loading key="1" v-if="(loading || initialLoading)">{{ $t('common.loading') }}</loading>
 			<!-- <div v-else> -->
 			<div v-if="(!loading && audio[0] != undefined)" key="2">
-				<form>
+				<!-- <form>
 					<button class="button mr-1">
 						<span class="material-icons mr-1">sort</span>
 						<span>Filters</span>
@@ -16,8 +16,8 @@
 						<span>Search</span>
 					</button>
 				</form>
-				<br>
-				<h1>Search results</h1>
+				<br> -->
+				<h1>{{ $t('explore.results') }}</h1>
 				<div class="beats">
 					<audio-card
 						v-for="audio in audio"
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div key="3" v-if="nomore">
-				<p>Sorry, there's no more beats..</p>
+				<p>{{ $t('explore.noMore') }}</p>
 			</div>
 			<div key="4" v-if="!initialLoading && pages > 1" class="pagination">
 				<router-link to="/beats">1</router-link>
