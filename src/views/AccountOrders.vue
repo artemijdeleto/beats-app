@@ -25,7 +25,7 @@
 					</div>
 					<span class="order__details__status__message">{{ $t('orders.paid') }}</span>
 					<br><br>
-					<button class="button mr-1">{{ $t('orders.info') }}</button>
+					<button class="button mr-1">{{ $t('orders.details') }}</button>
 					<a href="" class="button">{{ $t('orders.download') }}</a>
 				</div>
 			</div>

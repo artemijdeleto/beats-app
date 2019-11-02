@@ -45,7 +45,8 @@ export default {
 		license: 'License',
 		total: 'Total',
 		pay: 'Pay',
-		info: 'The order was successfully paid',
+		paid: 'The order was successfully paid',
+		details: 'Details',
 		download: 'Download files'
 	},
 	explore: {
