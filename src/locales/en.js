@@ -40,6 +40,14 @@ export default {
 		audios: 'My compositions',
 		noMore: 'No more compositions..'
 	},
+	orders: {
+		orders: 'My orders',
+		license: 'License',
+		total: 'Total',
+		pay: 'Pay',
+		info: 'The order was successfully paid',
+		download: 'Download files'
+	},
 	explore: {
 		results: 'Search results',
 		noMore: 'No more compositions. Try to apply another filters'
@@ -61,6 +69,7 @@ export default {
 		oops: 'Whoops..',
 		notFound: 'Seems like this page doesn\'t exist..',
 		goBack: 'Go back',
-		save: 'Save'
+		save: 'Save',
+		cancel: 'Cancel'
 	}
 }

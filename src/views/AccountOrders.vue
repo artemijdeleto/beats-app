@@ -1,32 +1,32 @@
 <template>
 	<div>
-		<h2>Мои покупки</h2>
+		<h2>{{ $t('orders.orders') }}</h2>
 		<div class="order">
 			<img src="assets/img/1.jpg" alt="">
 			<div class="order__details">
 				<h4><router-link class="message" to="/account/orders/132416">Reavan — High Hopes (acoustic instrumental)</router-link></h4>
-				<h6>Лицензия: эксклюзив</h6>
-				<h6>Сумма: <b>5000 руб.</b></h6>
+				<h6>{{ $t('orders.license') }}: эксклюзив</h6>
+				<h6>{{ $t('orders.total') }}: <b>5000 руб.</b></h6>
 				<hr>
-				<button class="button button--accent mr-1">Оплатить</button>
-				<button class="button button--red">Удалить</button>
+				<button class="button button--accent mr-1">{{ $t('orders.pay') }}</button>
+				<button class="button button--red">{{ $t('common.cancel') }}</button>
 			</div>
 		</div>
 		<div class="order">
 			<img src="assets/img/2.jpg" alt="">
 			<div class="order__details">
 				<h4><router-link class="message" to="/account/orders/132416">Digital Underdog — Can You Distribute It?</router-link></h4>
-				<h6>Лицензия: эксклюзив</h6>
-				<h6>Сумма: <b>5000 руб.</b></h6>
+				<h6>{{ $t('orders.license') }}: эксклюзив</h6>
+				<h6>{{ $t('orders.total') }}: <b>5000 руб.</b></h6>
 				<hr>
 				<div class="order__details__status order__details__status--green">
 					<div class="order__details__status__icon">
 						<span class="material-icons">done</span>
 					</div>
-					<span class="order__details__status__message">Заказ был успешно оплачен</span>
+					<span class="order__details__status__message">{{ $t('orders.paid') }}</span>
 					<br><br>
-					<button class="button mr-1">Подробности</button>
-					<a href="" class="button">Скачать архив</a>
+					<button class="button mr-1">{{ $t('orders.info') }}</button>
+					<a href="" class="button">{{ $t('orders.download') }}</a>
 				</div>
 			</div>
 		</div>
